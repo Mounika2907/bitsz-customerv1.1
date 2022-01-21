@@ -1,0 +1,11 @@
+
+add resubmit button 
+on submit toast message success message
+check custom btn scss 
+
+
+first page => no api 
+address proof => getkycocr aadhaar/passport
+identity proof => getpanocrv2 => pan
+liveness check => checkimageliveness api if success end navigate 
+
