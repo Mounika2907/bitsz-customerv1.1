@@ -56,9 +56,9 @@ class Reschedule extends Component {
     componentDidMount() {
         this.GetVcipStatus();
         window.addEventListener('beforeunload', this.onbeforeunload);
-        $('#faceMatchModel').modal('show');
+        $('#faceMatchDetectionModel').modal('show');
         setTimeout(() => {
-            $('#faceMatchModel').modal('hide');
+            $('#faceMatchDetectionModel').modal('hide');
             var element = document.getElementById("hideText");
             element.classList.remove("errormessage");
         }, 2500);
@@ -668,6 +668,34 @@ class Reschedule extends Component {
                                             <Text tid="yes" />
                                         </button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="modal fade custom-modal" id="faceMatchDetectionModel" data-backdrop="static" tabIndex={-1} role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header border-0">
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="modal-data">
+                                    <img src="./assets/images/success.svg" alt="no img" />
+                                    <h1 className="modal-data-title">Face Photo Capture loaded</h1>
+                                    <div>
+                                        <svg width="100px" height="100px" version="1.1" id="L3" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enableBackground="new 0 0 0 0" xmlSpace="preserve">
+                                            <circle fill="none" stroke="#fff" strokeWidth={4} cx={50} cy={50} r={44} style={{ opacity: '0.5' }} />
+                                            <circle fill="#fff" stroke="#e74c3c" strokeWidth={3} cx={8} cy={54} r={6}>
+                                                <animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 48" to="360 50 52" repeatCount="indefinite" />
+                                            </circle>
+                                        </svg>
+                                    </div>
+                                    <p className="modal-data-content">
+                                        Please wait, We are taking you to the next step
+                                    </p>
                                 </div>
                             </div>
                         </div>
