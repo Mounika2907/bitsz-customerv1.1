@@ -56,6 +56,7 @@ class Reschedule extends Component {
     componentDidMount() {
         this.GetVcipStatus();
         window.addEventListener('beforeunload', this.onbeforeunload);
+        
         $('#faceMatchDetectionModel').modal('show');
         setTimeout(() => {
             $('#faceMatchDetectionModel').modal('hide');
@@ -198,6 +199,14 @@ class Reschedule extends Component {
     joinSession = () => {
         clearInterval(this.state.intervalId1);
         this.OV = new OpenVidu();
+       
+        // let pElement = document.createElement('div')
+
+        // let pElementText = document.createTextNode('50% off on the above items!!')
+        
+        // pElement.appendChild(pElementText)
+        // let parent = document.querySelector('#inner-circle')
+        // parent.appendChild(pElement)
         // if (this.state.errorMessage !== "Capture Photo") {
         //     document.getElementById("inner-circle")
         //     .disabled = "true";
@@ -436,6 +445,7 @@ class Reschedule extends Component {
 
     handleTakePhoto = (dataUri) => {
         const base64result = dataUri.split(',')[1];
+       
         // document.getElementsByClassName('fas fa-camera text-dark').setAttribute("id", "inner-circle-disabled")
         // $('#inner-circle #inner-circle-disabled').append('<i className="fas fa-camera text-dark"></i>');
         if (this.state.errorMessage !== "Capture Photo") {
@@ -445,8 +455,6 @@ class Reschedule extends Component {
                 imgInpStatus: true
             })
         } else {
-            
-            // <div id ="inner-circle disabled"></div>
             this.setState({
                 imgInpStatus: false,
                 imgPath: base64result
@@ -480,6 +488,17 @@ class Reschedule extends Component {
     }
 
     handleCameraStart = (stream) => {
+        console.log(this.state.errorMessage)
+    //     if (this.state.errorMessage == "Capture Photo") {
+    //         console.log(this.state.errorMessagee,"capturephoto")
+
+    //         // document.getElementById("container-circles").style.display="none";
+    //         // element.className.add("disabledbutton");
+
+    //     // $("#container-circles").addClass("disabledbutton")
+    // }else{
+    //     document.getElementById("container-circles").style.display="none";
+    // }
         this.setState({
             streamVideo: stream
         })

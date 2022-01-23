@@ -81,8 +81,14 @@ class FaceDetections extends React.Component {
                 // this.setState({ message: "Multiple Faces Found" })
                 this.props.errorMessage("Multiple Faces Found")
             } else {
-                // this.setState({ message: "" })
                 this.props.errorMessage("Capture Photo")
+
+
+                // $("#outer-circle").addClass("buttonelement");
+                // document.getElementById("container-circles").style.opacity= 0.1 ;
+                // document.getElementById("container-circles").style.display=block";
+                // this.setState({ message: "" })
+                document.getElementById("inner-circle").style.opacity=1
                
             }
 
@@ -98,18 +104,27 @@ class FaceDetections extends React.Component {
                 const detectionsForSize = faceApi.resizeResults(result, { width: displaySize.width, height: displaySize.height })
                 const zoomError = detectionsForSize[0]._box._height
                 if (zoomError <= "150"){
+                    document.getElementById("inner-circle").style.opacity= 0.4 ;
                     this.props.errorMessage("Come closer")
                 }
                 else if (zoomError == "230" || (zoomError == "180") || (zoomError == "200")){
+                    document.getElementById("inner-circle").style.opacity= 0.4 ;
+
                         this.props.errorMessage("Come Closer to camera - don't move")
                     } 
                     else if (zoomError == "290" || (zoomError == "320")){
+                        document.getElementById("inner-circle").style.opacity= 0.4 ;
+
                         this.props.errorMessage("Come close")
                     }
                     else if (zoomError == "350"){
+                        document.getElementById("inner-circle").style.opacity= 0.4 ;
+
                         this.props.errorMessage("move back")
                     }
                 else if (zoomError >= "370") {
+                    document.getElementById("inner-circle").style.opacity= 0.4 ;
+
                         this.props.errorMessage("back")
                     }
 
@@ -131,7 +146,12 @@ class FaceDetections extends React.Component {
                 console.error('inside er', er)
             }
         } catch (e) {
-            
+            // $("#outer-circle").addClass("disabeldButton");
+
+            // document.getElementById("outer-circle").setAttribute("disabled","disabled");
+            // document.getElementById("inner-circle").disabled=true;
+
+            document.getElementById("inner-circle").style.opacity= 0.4 ;
             this.props.errorMessage(" Bring your face in centre");
            
             console.error(e, 'erro with')
