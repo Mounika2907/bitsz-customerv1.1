@@ -898,3 +898,14 @@ export const LocationAction = (model) => {
             })
     }
 }
+
+//  store capture photo
+export const GetCapturePhoto = (photo) => {
+    // console.log(photo, 'gend')
+    return (dispatch) => {
+        dispatch({
+            type: actionTypes.CAPTUREPHOTO,
+            payload: photo
+        });
+    }
+}

@@ -22,3 +22,4 @@ export const SCHEDULEDETAILS = "SCHEDULEDETAILS";
 export const CALENDER = "CALENDER";
 export const LOCATION = "LOCATION";
 export const PANDATA = "PANDATA";
+export const CAPTUREPHOTO = "CAPTUREPHOTO";

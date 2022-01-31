@@ -78,18 +78,9 @@ class FaceDetections extends React.Component {
         try {
             const result = await faceApi.detectAllFaces(this.video.current, new faceApi.TinyFaceDetectorOptions());
             if (result.length > 1) {
-                // this.setState({ message: "Multiple Faces Found" })
                 this.props.errorMessage("Multiple Faces Found")
             } else {
                 this.props.errorMessage("Capture Photo")
-
-
-                // $("#outer-circle").addClass("buttonelement");
-                // document.getElementById("container-circles").style.opacity= 0.1 ;
-                // document.getElementById("container-circles").style.display=block";
-                // this.setState({ message: "" })
-                document.getElementById("inner-circle").style.opacity=1
-               
             }
 
             const final = result.map((item, i) => {
@@ -99,61 +90,47 @@ class FaceDetections extends React.Component {
             })
             const displaySize = { width: final[0]._imageDims._width, height: final[0]._imageDims._height }
 
-            try {
+            // try {
 
-                const detectionsForSize = faceApi.resizeResults(result, { width: displaySize.width, height: displaySize.height })
-                const zoomError = detectionsForSize[0]._box._height
-                if (zoomError <= "150"){
-                    document.getElementById("inner-circle").style.opacity= 0.4 ;
-                    this.props.errorMessage("Come closer")
-                }
-                else if (zoomError == "230" || (zoomError == "180") || (zoomError == "200")){
-                    document.getElementById("inner-circle").style.opacity= 0.4 ;
-
-                        this.props.errorMessage("Come Closer to camera - don't move")
-                    } 
-                    else if (zoomError == "290" || (zoomError == "320")){
-                        document.getElementById("inner-circle").style.opacity= 0.4 ;
-
-                        this.props.errorMessage("Come close")
-                    }
-                    else if (zoomError == "350"){
-                        document.getElementById("inner-circle").style.opacity= 0.4 ;
-
-                        this.props.errorMessage("move back")
-                    }
-                else if (zoomError >= "370") {
-                    document.getElementById("inner-circle").style.opacity= 0.4 ;
-
-                        this.props.errorMessage("back")
-                    }
-
-                    // if (zoomError <= "200"){
-                    //     this.props.errorMessage("Come closer")
-                    // // }
-                    // } else if (zoomError <= "230"){
-                    //     this.props.errorMessage("Come close")
-                    // } 
-                    // else if (zoomError >= "370") {
-                    //     this.props.errorMessage("back")
-                    // }
-                
-                const canvas = document.getElementById('overlay')
-                faceApi.matchDimensions(canvas, displaySize)
-                faceApi.draw.drawDetections(canvas, detectionsForSize)
-
-            } catch (er) {
-                console.error('inside er', er)
+            const detectionsForSize = faceApi.resizeResults(result, { width: displaySize.width, height: displaySize.height })
+            const zoomError = detectionsForSize[0]._box._height
+            if (zoomError <= "160") {
+                this.props.errorMessage("Come closer")
             }
+            else if (zoomError == "230" || (zoomError == "180") || (zoomError == "200")){
+                    this.props.errorMessage("Come Closer to camera - don't move")
+                } 
+                else if (zoomError == "290" || (zoomError == "320")){
+                    this.props.errorMessage("Come close")
+                }
+                else if (zoomError == "350"){
+                    this.props.errorMessage("move back")
+                }
+            else if (zoomError >= "370") {
+                    this.props.errorMessage("back")
+                }
+
+            // if (zoomError <= "200"){
+            //     this.props.errorMessage("Come closer")
+            // // }
+            // } else if (zoomError <= "230"){
+            //     this.props.errorMessage("Come close")
+            // } 
+            // else if (zoomError >= "370") {
+            //     this.props.errorMessage("back")
+            // }
+
+            const canvas = document.getElementById('overlay')
+            faceApi.matchDimensions(canvas, displaySize)
+            faceApi.draw.drawDetections(canvas, detectionsForSize)
+
+            // } catch (er) {
+            //     console.error('inside er', er)
+            // }
         } catch (e) {
-            // $("#outer-circle").addClass("disabeldButton");
 
-            // document.getElementById("outer-circle").setAttribute("disabled","disabled");
-            // document.getElementById("inner-circle").disabled=true;
-
-            document.getElementById("inner-circle").style.opacity= 0.4 ;
             this.props.errorMessage(" Bring your face in centre");
-           
+
             console.error(e, 'erro with')
         }
         setTimeout(() => this.onPlay(), 1);
@@ -187,7 +164,7 @@ class FaceDetections extends React.Component {
                             right: 0,
                             bottom: 0,
                             top: 0,
-                            border:"1px solid rgb(255, 110, 48)",
+                            border: "1px solid rgb(255, 110, 48)",
                         }}
                     />
                 </div>

@@ -3,6 +3,8 @@ import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { ResetRdrAction } from "../../../Store/Actions/UsersActions/UserActions";
 import { Text } from "../../../View/Language/Language";
+// import * as faceApi from "face-api.js";
+
 
 class Sidebar extends Component {
   state = {
@@ -11,6 +13,10 @@ class Sidebar extends Component {
       steps: "",
     },
   };
+
+  // componentDidMount() {
+  //   faceApi.nets.tinyFaceDetector.load("/models/");
+  // }
 
   handleSteps = (val, steps) => {
     // this.setState({

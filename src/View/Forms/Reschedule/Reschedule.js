@@ -18,6 +18,7 @@ import Camera from 'react-html5-camera-photo';
 import LivenessCapture from './LivenessCapture';
 import { CheckImageLiveness } from '../../../Store/Actions/BitzsAction/BitzsAction';
 import FaceDetections from '../../End/FaceDetection';
+// import Camers from './Camers';
 
 const $ = window.$;
 
@@ -56,12 +57,11 @@ class Reschedule extends Component {
     componentDidMount() {
         this.GetVcipStatus();
         window.addEventListener('beforeunload', this.onbeforeunload);
-        
-        $('#faceMatchDetectionModel').modal('show');
+        // $('#faceMatchDetectionModel').modal('show');
         setTimeout(() => {
             $('#faceMatchDetectionModel').modal('hide');
             var element = document.getElementById("hideText");
-            element.classList.remove("errormessage");
+            // element.classList.remove("errormessage");
         }, 2500);
         // this.fakeRequest().then(() => {
         //     const el = document.getElementById("hideText");
@@ -82,7 +82,7 @@ class Reschedule extends Component {
         // const langid = sessionStorage.getItem("langid");
         const status = this.props.pincodeRdr.statuses?.videoconfstatus || sessionStorage.getItem("videoconfstatus");
         // const isscheduled = this.props.pincodeRdr.statuses?.isscheduled || sessionStorage.getItem("isscheduled");
-        console.log("fhdfhsfx");
+        // console.log("fhdfhsfx");
         if (status !== "3") {
             const stage = {
                 height: "76%",
@@ -199,14 +199,6 @@ class Reschedule extends Component {
     joinSession = () => {
         clearInterval(this.state.intervalId1);
         this.OV = new OpenVidu();
-       
-        // let pElement = document.createElement('div')
-
-        // let pElementText = document.createTextNode('50% off on the above items!!')
-        
-        // pElement.appendChild(pElementText)
-        // let parent = document.querySelector('#inner-circle')
-        // parent.appendChild(pElement)
         // if (this.state.errorMessage !== "Capture Photo") {
         //     document.getElementById("inner-circle")
         //     .disabled = "true";
@@ -444,17 +436,20 @@ class Reschedule extends Component {
 
 
     handleTakePhoto = (dataUri) => {
+        // console.log(this.props.bitszReducer?.photo, 'reds')
+        // const base64result = this.props.bitszReducer?.photo.split(',')[1];
         const base64result = dataUri.split(',')[1];
-       
-        // document.getElementsByClassName('fas fa-camera text-dark').setAttribute("id", "inner-circle-disabled")
         // $('#inner-circle #inner-circle-disabled').append('<i className="fas fa-camera text-dark"></i>');
-        if (this.state.errorMessage !== "Capture Photo") {
+        if (this.state.errorMessage != "Capture Photo") {
             // $('.react-html5-camera-photo #inner-circle').append('<i className="fas fa-camera text-dark"></i>');
+            // document.getElementsByClassName('fas fa-camera text-dark').setAttribute("id", "is-clicked")
             this.setState({
                 imgPath: null,
                 imgInpStatus: true
             })
         } else {
+            
+            // <div id ="inner-circle disabled"></div>
             this.setState({
                 imgInpStatus: false,
                 imgPath: base64result
@@ -488,17 +483,6 @@ class Reschedule extends Component {
     }
 
     handleCameraStart = (stream) => {
-        console.log(this.state.errorMessage)
-    //     if (this.state.errorMessage == "Capture Photo") {
-    //         console.log(this.state.errorMessagee,"capturephoto")
-
-    //         // document.getElementById("container-circles").style.display="none";
-    //         // element.className.add("disabledbutton");
-
-    //     // $("#container-circles").addClass("disabledbutton")
-    // }else{
-    //     document.getElementById("container-circles").style.display="none";
-    // }
         this.setState({
             streamVideo: stream
         })
@@ -566,10 +550,12 @@ class Reschedule extends Component {
                                        
                                             <Camera
                                                 isImageMirror={false}
-                                                onTakePhoto={(dataUri) => { this.state.errorMessage === "Capture Photo" ? this.handleTakePhoto(dataUri) : this.handleTakePhoto("s") }}
+                                                onTakePhoto={(dataUri) => { this.handleTakePhoto(dataUri)  }}
+                                                // onTakePhoto={(dataUri) => { this.state.errorMessage === "Capture Photo" ? this.handleTakePhoto(dataUri) : this.handleTakePhoto("s") }}
                                                 onCameraStart={(stream) => { this.handleCameraStart(stream); }}
 
                                             />
+                                            {/* <Camers /> */}
                                             <FaceDetections errorMessage={this.handleErrorMessage} />
 
                                             {
@@ -594,7 +580,11 @@ class Reschedule extends Component {
                                     </div>
                                     : null
                                 }
-
+{
+            // console.log(sessionStorage.getItem('photo'), 'reds')
+            // this.props.bitszReducer?.photo.split(',')[1];
+    
+}
                                 <LivenessCapture
                                     imgSrc={imgPath}
                                     captureStatus={captureStatus}
