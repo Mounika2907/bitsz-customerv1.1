@@ -2160,6 +2160,7 @@ main {
     // width: 50% !important;
     display: inline-block !important;
     // border:1px solid rgb(255, 110, 48);
+    border:none;
 
     video {
         width: 100% !important;
@@ -2175,7 +2176,7 @@ main {
         background: rgb(255, 110, 48);
         left: 50%;
         top: 38px;
-        height: 44px;
+        // height: 44px;
         width: 44px;
         
         margin: -22px 0 0 -22px;
@@ -2185,12 +2186,14 @@ main {
         // cursor: pointer !important;
         cursor: pointer !important;
         // cursor: not-allowed !important;
-       
+        
     }
+    
     // #inner-circle-disabled {
-    //     // background: rgb(255, 110, 48);
-    //     background: black;
-
+        // .is-clicked{height:38px;width:38px;margin:-19px 0 0 -19px;background: rgb(14, 99, 17); }
+        //     // background: rgb(255, 110, 48);
+        //     background: black;
+        
     //     // background-color: #ff0055 !important;
     //     // cursor: pointer !important;
     //     // cursor: pointer !important;
@@ -2204,6 +2207,23 @@ main {
     // }
 
 }
+
+// #inner-circle-disabled {
+//     // breakackground: rgb(255, 110, 48);
+//     background: black;
+
+//     // background-color: #ff0055 !important;
+//     // cursor: pointer !important;
+//     // cursor: pointer !important;
+//     cursor: not-allowed !important;
+// //     // i {
+// //     //     // position: absolute;
+// //     //     cursor: not-allowed !important;
+// //     //     opacity: 0.5 !important;
+// //     //     // border-radius: 50%;
+// //     // }
+// }
+
 
 
 .reschedule {

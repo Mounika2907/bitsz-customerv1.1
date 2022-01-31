@@ -103,7 +103,7 @@ class PAN extends Component {
                     reader.readAsDataURL(event.target.files[i]);
                 }
             } else {
-                console.log("dsfsgfsgfdg")
+                // console.log("dsfsgfsgfdg")
                 for (let i = 0; i < val; i++) {
                     let reader = new FileReader();
                     reader.onload = function (ev) {

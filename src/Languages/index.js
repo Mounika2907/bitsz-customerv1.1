@@ -14,7 +14,7 @@ import urdu from './urdu';
 
 export const dictionaryList = {
     en,
-    oriya,
+    // oriya,
     hi,
     // te,
     // tamil,
@@ -30,7 +30,7 @@ export const dictionaryList = {
 
 export const languageOptions = [
     { id: 'en', text: 'English' },
-    { id: 'oriya', text: 'Odia' },
+    // { id: 'oriya', text: 'Odia' },
     { id: 'hi', text: 'हिन्दी' },
     // { id: 'te', text: 'తెలుగు' },
     // { id: 'tamil', text: 'தமிழ்' },
